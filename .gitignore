@@ -1,0 +1,7 @@
+credentials.json
+client_secret*.json
+.streamlit/secrets.toml
+.uxr_config.json
+*.pyc
+__pycache__/
+.env
