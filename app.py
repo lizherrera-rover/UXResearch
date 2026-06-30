@@ -106,59 +106,305 @@ init_session_state()
 # ── Styling ────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-    html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+    :root {
+        --rover-purple: #6D28D9;
+        --rover-purple-2: #8B5CF6;
+        --rover-lilac: #F4F0FF;
+        --rover-mint: #E9FBF2;
+        --rover-mint-strong: #26A269;
+        --ink: #111827;
+        --muted: #6B7280;
+        --line: #E5E7EB;
+        --panel: #FFFFFF;
+        --panel-soft: #FAFAFB;
+        --warning-bg: #FFF7ED;
+        --warning-line: #FED7AA;
+        --warning-ink: #9A3412;
+        --success-bg: #ECFDF5;
+        --success-line: #A7F3D0;
+        --success-ink: #065F46;
+        --shadow-soft: 0 12px 28px rgba(17, 24, 39, 0.07);
+        --shadow-tiny: 0 2px 8px rgba(17, 24, 39, 0.05);
+    }
+
+    html, body, [class*="css"] {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .stApp {
+        background:
+            radial-gradient(circle at top left, rgba(139, 92, 246, .13), transparent 32rem),
+            linear-gradient(180deg, #FBFAFF 0%, #F7F8FB 42%, #FFFFFF 100%);
+        color: var(--ink);
+    }
+
+    section.main > div.block-container {
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+        max-width: 1220px;
+    }
+
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #FFFFFF 0%, #F7F3FF 100%);
+        border-right: 1px solid rgba(109, 40, 217, .12);
+    }
+
+    [data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+        gap: .55rem;
+    }
+
+    .sidebar-brand {
+        background: linear-gradient(135deg, #FFFFFF 0%, #F6F0FF 100%);
+        border: 1px solid #E9D5FF;
+        border-radius: 20px;
+        padding: 1rem;
+        box-shadow: var(--shadow-tiny);
+        margin-bottom: .4rem;
+    }
+
+    .sidebar-title {
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+        margin-top: .6rem;
+    }
+
+    .sidebar-subtitle {
+        font-size: .78rem;
+        line-height: 1.35;
+        color: var(--muted);
+        margin-top: .15rem;
+    }
+
+    .current-step-card {
+        background: #111827;
+        color: #FFFFFF;
+        border-radius: 16px;
+        padding: .85rem .95rem;
+        margin: .75rem 0 .6rem;
+        box-shadow: var(--shadow-tiny);
+    }
+
+    .current-step-eyebrow {
+        color: #C4B5FD;
+        font-size: .68rem;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        font-weight: 800;
+        margin-bottom: .18rem;
+    }
+
+    .current-step-title {
+        color: #FFFFFF;
+        font-size: .9rem;
+        font-weight: 750;
+        line-height: 1.25;
+    }
 
     .step-header {
-        font-size: 1.35rem; font-weight: 700; color: #111827;
-        margin-bottom: 0.15rem; letter-spacing: -0.01em;
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--ink);
+        margin-bottom: 0.25rem;
+        letter-spacing: -0.045em;
+        line-height: 1.1;
     }
+
     .step-sub {
-        font-size: 0.9rem; color: #6b7280; margin-bottom: 1.5rem;
+        font-size: 1rem;
+        color: var(--muted);
+        margin-bottom: 1.35rem;
+        max-width: 780px;
+        line-height: 1.55;
     }
+
     .stat-box {
-        background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
-        padding: 1.1rem 1rem; text-align: center;
-        box-shadow: 0 1px 3px rgba(0,0,0,.04);
+        background: rgba(255,255,255,.86);
+        border: 1px solid rgba(229, 231, 235, .9);
+        border-radius: 18px;
+        padding: 1.15rem 1rem;
+        text-align: left;
+        box-shadow: var(--shadow-tiny);
+        position: relative;
+        overflow: hidden;
     }
-    .stat-num  { font-size: 1.9rem; font-weight: 800; color: #7C3AED; line-height: 1.1; }
-    .stat-label { font-size: 0.75rem; color: #9ca3af; margin-top: 2px; text-transform: uppercase; letter-spacing: .04em; }
+
+    .stat-box:before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--rover-purple), #22C55E);
+    }
+
+    .stat-num {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--ink);
+        line-height: 1.05;
+        letter-spacing: -0.035em;
+    }
+
+    .stat-label {
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin-top: 5px;
+        text-transform: uppercase;
+        letter-spacing: .07em;
+        font-weight: 700;
+    }
+
     .var-panel {
-        background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 10px;
-        padding: 0.85rem 1rem; margin-bottom: 0.5rem;
+        background: var(--rover-lilac);
+        border: 1px solid #DDD6FE;
+        border-radius: 16px;
+        padding: 1rem 1.05rem;
+        margin-bottom: 0.65rem;
     }
+
     .var-pill {
-        display: inline-block; background: #ede9fe; color: #5b21b6;
-        border-radius: 6px; padding: 2px 8px; margin: 2px 3px 2px 0;
-        font-family: 'Courier New', monospace; font-size: 0.78rem; font-weight: 600;
+        display: inline-block;
+        background: #FFFFFF;
+        color: #5B21B6;
+        border: 1px solid #DDD6FE;
+        border-radius: 999px;
+        padding: 4px 10px;
+        margin: 3px 4px 3px 0;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.78rem;
+        font-weight: 700;
         cursor: default;
     }
+
     .section-label {
-        font-size: 0.72rem; font-weight: 600; color: #9ca3af;
-        text-transform: uppercase; letter-spacing: .06em; margin-bottom: 0.4rem;
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: #6D28D9;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        margin-bottom: 0.48rem;
     }
-    .tz-card {
-        background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px;
-        padding: 0.8rem 1rem; margin-bottom: 0.5rem; color: #14532d;
+
+    .tz-card, .success-banner {
+        background: var(--success-bg);
+        border: 1px solid var(--success-line);
+        border-radius: 16px;
+        padding: 0.85rem 1rem;
+        margin-bottom: 0.65rem;
+        color: var(--success-ink);
         font-size: 0.9rem;
+        line-height: 1.45;
+        box-shadow: var(--shadow-tiny);
     }
+
     .tz-warn {
-        background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
-        padding: 0.8rem 1rem; margin-bottom: 0.5rem; color: #78350f;
+        background: var(--warning-bg);
+        border: 1px solid var(--warning-line);
+        border-radius: 16px;
+        padding: 0.85rem 1rem;
+        margin-bottom: 0.65rem;
+        color: var(--warning-ink);
         font-size: 0.9rem;
+        line-height: 1.45;
+        box-shadow: var(--shadow-tiny);
     }
-    .success-banner {
-        background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px;
-        padding: 0.8rem 1.1rem; color: #166534; font-size: 0.9rem;
+
+    div[data-testid="stExpander"] {
+        border: 1px solid rgba(229, 231, 235, .95) !important;
+        border-radius: 18px !important;
+        background: rgba(255,255,255,.78) !important;
+        box-shadow: var(--shadow-tiny);
+        overflow: hidden;
     }
-    div[data-testid="stExpander"] { border: 1px solid #e5e7eb !important; border-radius: 10px !important; }
-    div[data-testid="stExpander"] summary { font-weight: 600 !important; }
-    .stButton > button[kind="primary"] {
-        background: #7C3AED !important; border-color: #7C3AED !important;
-        border-radius: 8px !important; font-weight: 600 !important;
+
+    div[data-testid="stExpander"] summary {
+        font-weight: 750 !important;
+        color: var(--ink) !important;
     }
-    .stButton > button[kind="primary"]:hover { background: #6d28d9 !important; }
+
+    div[data-testid="stTabs"] button {
+        font-weight: 700;
+        color: var(--muted);
+    }
+
+    div[data-testid="stTabs"] button[aria-selected="true"] {
+        color: var(--rover-purple);
+    }
+
+    div[data-testid="stDataFrame"] {
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-tiny);
+    }
+
+    .stTextInput input,
+    .stNumberInput input,
+    .stTextArea textarea,
+    div[data-baseweb="select"] > div,
+    div[data-baseweb="base-input"] {
+        border-radius: 12px !important;
+        border-color: #D1D5DB !important;
+        background-color: #FFFFFF !important;
+    }
+
+    .stTextArea textarea {
+        line-height: 1.5 !important;
+    }
+
+    .stButton > button,
+    .stDownloadButton > button,
+    .stLinkButton > a {
+        border-radius: 12px !important;
+        font-weight: 750 !important;
+        border: 1px solid #E5E7EB !important;
+        box-shadow: 0 1px 2px rgba(17,24,39,.05);
+        transition: all .12s ease-in-out;
+    }
+
+    .stButton > button:hover,
+    .stDownloadButton > button:hover,
+    .stLinkButton > a:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 14px rgba(17,24,39,.09);
+    }
+
+    .stButton > button[kind="primary"],
+    .stDownloadButton > button[kind="primary"] {
+        background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%) !important;
+        border-color: #6D28D9 !important;
+        color: #FFFFFF !important;
+    }
+
+    .stButton > button[kind="primary"]:hover,
+    .stDownloadButton > button[kind="primary"]:hover {
+        background: linear-gradient(135deg, #5B21B6 0%, #7C3AED 100%) !important;
+    }
+
+    .stAlert {
+        border-radius: 16px;
+    }
+
+    code {
+        border-radius: 10px !important;
+    }
+
+    hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #E5E7EB, transparent);
+        margin: 1.1rem 0;
+    }
+
+    @media (max-width: 760px) {
+        section.main > div.block-container { padding-left: 1rem; padding-right: 1rem; }
+        .step-header { font-size: 1.55rem; }
+        .step-sub { font-size: .92rem; }
+        .stat-num { font-size: 1.55rem; }
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -268,40 +514,75 @@ def dict_to_creds(d):
 # ── Sidebar navigation ─────────────────────────────────────────────────────────
 def sidebar():
     with st.sidebar:
-        st.image("https://www.rover.com/blog/wp-content/uploads/rover-logo-black.png", width=120)
-        st.markdown("### Interview Scheduler")
-        st.markdown("---")
-
         steps = [
-            (1, "Sign in with Google"),
-            (2, "Select candidates"),
-            (3, "Design invitation"),
-            (4, "Set up calendar"),
-            (5, "Send invites"),
+            (1, "Sign in with Google", "Connect Calendar, Gmail, and Sheets."),
+            (2, "Select candidates", "Load the pool, filter, and sample."),
+            (3, "Design invitation", "Write the invite and check timezone fit."),
+            (4, "Set up calendar", "Create the schedule and save the link."),
+            (5, "Send invites", "Review, send, and log invite dates."),
         ]
 
         current = st.session_state["step"]
-        # Allow jumping to any step that's been reached or is current
+        current_label = next((label for n, label, _ in steps if n == current), "Interview Scheduler")
+
+        st.markdown(
+            """
+            <div class="sidebar-brand">
+                <img src="https://www.rover.com/blog/wp-content/uploads/rover-logo-black.png" style="width:112px; display:block;" />
+                <div class="sidebar-title">Research Ops Scheduler</div>
+                <div class="sidebar-subtitle">Recruit, schedule, and invite participants without turning your desk into a spreadsheet crime scene.</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        st.markdown(
+            f"""
+            <div class="current-step-card">
+                <div class="current-step-eyebrow">Current step</div>
+                <div class="current-step-title">Step {current} · {current_label}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
         max_reached = current
-        for n, label in steps:
+        for n, label, desc in steps:
             if n < current:
-                icon = "✅"
+                icon = "✓"
+                prefix = "Done"
             elif n == current:
-                icon = "👉"
+                icon = "●"
+                prefix = "Now"
             else:
                 icon = "○"
+                prefix = "Locked"
 
-            # Steps already visited are clickable; future steps are greyed out
             if n <= max_reached:
-                if st.button(f"{icon} Step {n} — {label}", key=f"nav_{n}", use_container_width=True):
+                button_label = f"{icon} {prefix}: {label}"
+                if st.button(button_label, key=f"nav_{n}", use_container_width=True):
                     st.session_state["step"] = n
                     st.rerun()
+                st.caption(desc)
             else:
-                st.markdown(f"<span style='color:#9ca3af'>{icon} Step {n} — {label}</span>", unsafe_allow_html=True)
+                st.markdown(
+                    f"<div style='color:#9CA3AF;font-size:.88rem;padding:.35rem .15rem'>{icon} {prefix}: {label}</div>"
+                    f"<div style='color:#A1A1AA;font-size:.75rem;margin:-.25rem 0 .45rem .15rem'>{desc}</div>",
+                    unsafe_allow_html=True,
+                )
 
         st.markdown("---")
+
         if st.session_state["user_email"]:
-            st.caption(f"Signed in as\n**{st.session_state['user_email']}**")
+            st.markdown(
+                f"""
+                <div style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;padding:.75rem .85rem;margin-bottom:.65rem">
+                    <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:#6D28D9;font-weight:800;margin-bottom:.2rem">Signed in</div>
+                    <div style="font-size:.82rem;color:#111827;line-height:1.3;word-break:break-word">{st.session_state['user_email']}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
         if st.session_state["step"] > 1:
             if st.button("↩ Start over", use_container_width=True):
@@ -319,29 +600,34 @@ def render_step_footer():
         (4, "Set up calendar"),
         (5, "Send invites"),
     ]
-    st.markdown("<div style='height:2.5rem'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:2.25rem'></div>", unsafe_allow_html=True)
     pills = ""
     for n, label in steps:
         if n < current:
-            bg, fg, dot = "#7C3AED", "#fff", "✓"
+            bg, fg, dot = "#059669", "#fff", "✓"
+            border = "#059669"
         elif n == current:
-            bg, fg, dot = "#7C3AED", "#fff", str(n)
+            bg, fg, dot = "#111827", "#fff", str(n)
+            border = "#111827"
         else:
-            bg, fg, dot = "#e5e7eb", "#9ca3af", str(n)
-        txt_color = "#111827" if n == current else ("#7C3AED" if n < current else "#9ca3af")
-        weight = "700" if n == current else "400"
+            bg, fg, dot = "#F3F4F6", "#9CA3AF", str(n)
+            border = "#E5E7EB"
+        txt_color = "#111827" if n == current else ("#047857" if n < current else "#9CA3AF")
+        weight = "800" if n == current else "650"
         pills += (
-            f'<div style="display:flex;align-items:center;gap:6px">'
-            f'<span style="width:22px;height:22px;border-radius:50%;background:{bg};color:{fg};'
-            f'display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;flex-shrink:0">{dot}</span>'
-            f'<span style="font-size:0.75rem;color:{txt_color};font-weight:{weight};white-space:nowrap">{label}</span>'
+            f'<div style="display:flex;align-items:center;gap:8px;min-width:0">'
+            f'<span style="width:26px;height:26px;border-radius:999px;background:{bg};color:{fg};border:1px solid {border};'
+            f'display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;flex-shrink:0">{dot}</span>'
+            f'<span style="font-size:0.76rem;color:{txt_color};font-weight:{weight};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{label}</span>'
             f'</div>'
         )
         if n < len(steps):
-            pills += '<div style="flex:1;height:1px;background:#e5e7eb;min-width:12px;margin:0 4px"></div>'
+            line = "#A7F3D0" if n < current else "#E5E7EB"
+            pills += f'<div style="flex:1;height:1px;background:{line};min-width:12px;margin:0 8px"></div>'
     st.markdown(
-        f'<div style="display:flex;align-items:center;gap:0;padding:0.9rem 1rem;'
-        f'background:#fff;border:1px solid #e5e7eb;border-radius:12px;margin-top:0.5rem">'
+        f'<div style="display:flex;align-items:center;gap:0;padding:1rem 1.05rem;'
+        f'background:rgba(255,255,255,.86);border:1px solid #E5E7EB;border-radius:18px;margin-top:0.5rem;'
+        f'box-shadow:0 2px 10px rgba(17,24,39,.05);overflow-x:auto">'
         f'{pills}</div>',
         unsafe_allow_html=True,
     )
