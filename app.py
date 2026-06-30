@@ -515,11 +515,11 @@ def dict_to_creds(d):
 def sidebar():
     with st.sidebar:
         steps = [
-            (1, "Sign in with Google"),
-            (2, "Select candidates"),
-            (3, "Design invitation"),
-            (4, "Set up calendar"),
-            (5, "Send invites"),
+            (1, "Sign in with Google", "Connect Calendar, Gmail, and Sheets."),
+            (2, "Select candidates", "Load the pool, filter, and sample."),
+            (3, "Design invitation", "Write the invite and merge fields."),
+            (4, "Set up calendar", "Create the booking page and save the link."),
+            (5, "Send invites", "Review, send, and log invite dates."),
         ]
 
         current = st.session_state["step"]
