@@ -201,11 +201,40 @@ def get_auth_url():
         prompt="consent",
     )
     st.session_state["oauth_state"] = state
+    # google-auth-oauthlib >= 1.2.0 auto-generates PKCE; capture the verifier
+    # so the callback tab (new session) can use it during token exchange.
+    code_verifier = getattr(flow, "code_verifier", None)
+    if code_verifier is None:
+        # Fallback: check the inner OAuth2 client
+        try:
+            code_verifier = flow.oauth2session._client.code_verifier
+        except Exception:
+            pass
+    if code_verifier:
+        verifier_file = Path(tempfile.gettempdir()) / f"uxr_pkce_{state}.txt"
+        verifier_file.write_text(code_verifier)
     return auth_url
 
 def exchange_code_for_credentials(code):
     flow = get_flow()
-    flow.fetch_token(code=code)
+    # Retrieve PKCE verifier stored during get_auth_url(), indexed by OAuth state.
+    # The callback arrives in a new browser tab (new Streamlit session), so
+    # session_state from the original tab is unavailable — we use a temp file instead.
+    state = st.query_params.get("state", "")
+    code_verifier = None
+    try:
+        if state:
+            verifier_file = Path(tempfile.gettempdir()) / f"uxr_pkce_{state}.txt"
+            if verifier_file.exists():
+                code_verifier = verifier_file.read_text().strip()
+                verifier_file.unlink(missing_ok=True)
+    except Exception:
+        pass
+
+    if code_verifier:
+        flow.fetch_token(code=code, code_verifier=code_verifier)
+    else:
+        flow.fetch_token(code=code)
     return flow.credentials
 
 def get_user_email(creds):
