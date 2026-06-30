@@ -1,6 +1,6 @@
 """
 =======================================================
-  ROVER RESEARCH OPS — Interview Scheduler
+  ROVER RESEARCH — Interview Scheduler
   Streamlit app for scheduling UX research interviews
 =======================================================
 """
@@ -542,7 +542,7 @@ def sidebar():
             """
             <div class="sidebar-brand">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Rover.com_logo.jpg" style="width:112px; display:block;" />
-                <div class="sidebar-title">Research Ops Scheduler</div>
+                <div class="sidebar-title">Research Scheduler</div>
                 <div class="sidebar-subtitle">Recruit, schedule, and invite participants.</div>
             </div>
             """,
@@ -851,7 +851,7 @@ def step_load_candidates():
             '<div style="background:#FFFFFF;border:1px solid #CFEFDC;border-radius:12px;'
             'padding:1rem 1.2rem;margin-bottom:1.5rem">'
             '<div style="font-weight:700;margin-bottom:4px">📊 Load your candidate pool</div>'
-            '<div style="font-size:0.88rem;color:#6b7280">Use the Rover Research Ops base (recommended) or bring your own data. '
+            '<div style="font-size:0.88rem;color:#6b7280">Use the Rover Research base (recommended) or bring your own data. '
             'The base automatically excludes people with a UX incentive in the last 6 months or more than 5 accumulated incentives.</div>'
             '</div>',
             unsafe_allow_html=True,
