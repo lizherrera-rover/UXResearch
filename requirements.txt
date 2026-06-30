@@ -5,3 +5,4 @@ google-auth-httplib2>=0.2.0
 google-api-python-client>=2.130.0
 gspread>=6.1.0
 pandas>=2.2.0
+pytz>=2024.1
