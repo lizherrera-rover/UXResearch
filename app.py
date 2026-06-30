@@ -109,24 +109,21 @@ st.markdown("""
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
     :root {
-        --rover-purple: #6D28D9;
-        --rover-purple-2: #8B5CF6;
-        --rover-lilac: #F4F0FF;
-        --rover-mint: #E9FBF2;
-        --rover-mint-strong: #26A269;
+        --rover-green: #00BF6F;
+        --rover-green-dark: #008A4E;
+        --rover-green-soft: #EAF8F0;
         --ink: #111827;
-        --muted: #6B7280;
-        --line: #E5E7EB;
+        --muted: #667085;
+        --line: #E6E8EC;
         --panel: #FFFFFF;
-        --panel-soft: #FAFAFB;
-        --warning-bg: #FFF7ED;
-        --warning-line: #FED7AA;
-        --warning-ink: #9A3412;
-        --success-bg: #ECFDF5;
-        --success-line: #A7F3D0;
+        --panel-soft: #F8FAF9;
+        --warning-bg: #FFF8ED;
+        --warning-line: #F4D5A6;
+        --warning-ink: #8A4B08;
+        --success-bg: #F0FBF5;
+        --success-line: #BFEBD1;
         --success-ink: #065F46;
-        --shadow-soft: 0 12px 28px rgba(17, 24, 39, 0.07);
-        --shadow-tiny: 0 2px 8px rgba(17, 24, 39, 0.05);
+        --shadow-tiny: 0 2px 10px rgba(17, 24, 39, 0.04);
     }
 
     html, body, [class*="css"] {
@@ -134,9 +131,7 @@ st.markdown("""
     }
 
     .stApp {
-        background:
-            radial-gradient(circle at top left, rgba(139, 92, 246, .13), transparent 32rem),
-            linear-gradient(180deg, #FBFAFF 0%, #F7F8FB 42%, #FFFFFF 100%);
+        background: #FFFFFF;
         color: var(--ink);
     }
 
@@ -147,21 +142,27 @@ st.markdown("""
     }
 
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #FFFFFF 0%, #F7F3FF 100%);
-        border-right: 1px solid rgba(109, 40, 217, .12);
+        background: #FFFFFF;
+        border-right: 1px solid var(--line);
     }
 
     [data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
-        gap: .55rem;
+        gap: .5rem;
     }
 
     .sidebar-brand {
-        background: linear-gradient(135deg, #FFFFFF 0%, #F6F0FF 100%);
-        border: 1px solid #E9D5FF;
-        border-radius: 20px;
+        background: #FFFFFF;
+        border: 1px solid #CFEFDC;
+        border-radius: 18px;
         padding: 1rem;
         box-shadow: var(--shadow-tiny);
-        margin-bottom: .4rem;
+        margin-bottom: .5rem;
+    }
+
+    .sidebar-brand img {
+        background: #FFFFFF;
+        padding: 0;
+        border-radius: 8px;
     }
 
     .sidebar-title {
@@ -169,7 +170,7 @@ st.markdown("""
         font-weight: 800;
         letter-spacing: -0.02em;
         color: var(--ink);
-        margin-top: .6rem;
+        margin-top: .65rem;
     }
 
     .sidebar-subtitle {
@@ -180,17 +181,17 @@ st.markdown("""
     }
 
     .current-step-card {
-        background: #111827;
-        color: #FFFFFF;
+        background: var(--rover-green-soft);
+        color: var(--ink);
+        border: 1px solid #CFEFDC;
         border-radius: 16px;
-        padding: .85rem .95rem;
-        margin: .75rem 0 .6rem;
-        box-shadow: var(--shadow-tiny);
+        padding: .8rem .9rem;
+        margin: .75rem 0 .55rem;
     }
 
     .current-step-eyebrow {
-        color: #C4B5FD;
-        font-size: .68rem;
+        color: var(--rover-green-dark);
+        font-size: .66rem;
         text-transform: uppercase;
         letter-spacing: .08em;
         font-weight: 800;
@@ -198,14 +199,14 @@ st.markdown("""
     }
 
     .current-step-title {
-        color: #FFFFFF;
+        color: var(--ink);
         font-size: .9rem;
         font-weight: 750;
         line-height: 1.25;
     }
 
     .step-header {
-        font-size: 2rem;
+        font-size: 1.9rem;
         font-weight: 800;
         color: var(--ink);
         margin-bottom: 0.25rem;
@@ -214,18 +215,18 @@ st.markdown("""
     }
 
     .step-sub {
-        font-size: 1rem;
+        font-size: .98rem;
         color: var(--muted);
         margin-bottom: 1.35rem;
         max-width: 780px;
-        line-height: 1.55;
+        line-height: 1.52;
     }
 
     .stat-box {
-        background: rgba(255,255,255,.86);
-        border: 1px solid rgba(229, 231, 235, .9);
-        border-radius: 18px;
-        padding: 1.15rem 1rem;
+        background: #FFFFFF;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1.05rem 1rem;
         text-align: left;
         box-shadow: var(--shadow-tiny);
         position: relative;
@@ -236,12 +237,12 @@ st.markdown("""
         content: "";
         position: absolute;
         inset: 0 0 auto 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--rover-purple), #22C55E);
+        height: 3px;
+        background: var(--rover-green);
     }
 
     .stat-num {
-        font-size: 2rem;
+        font-size: 1.85rem;
         font-weight: 800;
         color: var(--ink);
         line-height: 1.05;
@@ -257,32 +258,10 @@ st.markdown("""
         font-weight: 700;
     }
 
-    .var-panel {
-        background: var(--rover-lilac);
-        border: 1px solid #DDD6FE;
-        border-radius: 16px;
-        padding: 1rem 1.05rem;
-        margin-bottom: 0.65rem;
-    }
-
-    .var-pill {
-        display: inline-block;
-        background: #FFFFFF;
-        color: #5B21B6;
-        border: 1px solid #DDD6FE;
-        border-radius: 999px;
-        padding: 4px 10px;
-        margin: 3px 4px 3px 0;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-        font-size: 0.78rem;
-        font-weight: 700;
-        cursor: default;
-    }
-
     .section-label {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         font-weight: 800;
-        color: #6D28D9;
+        color: var(--rover-green-dark);
         text-transform: uppercase;
         letter-spacing: .08em;
         margin-bottom: 0.48rem;
@@ -291,32 +270,71 @@ st.markdown("""
     .tz-card, .success-banner {
         background: var(--success-bg);
         border: 1px solid var(--success-line);
-        border-radius: 16px;
-        padding: 0.85rem 1rem;
-        margin-bottom: 0.65rem;
+        border-radius: 14px;
+        padding: 0.75rem .9rem;
+        margin-bottom: 0.6rem;
         color: var(--success-ink);
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         line-height: 1.45;
-        box-shadow: var(--shadow-tiny);
     }
 
     .tz-warn {
         background: var(--warning-bg);
         border: 1px solid var(--warning-line);
-        border-radius: 16px;
-        padding: 0.85rem 1rem;
-        margin-bottom: 0.65rem;
+        border-radius: 14px;
+        padding: 0.75rem .9rem;
+        margin-bottom: 0.6rem;
         color: var(--warning-ink);
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         line-height: 1.45;
-        box-shadow: var(--shadow-tiny);
+    }
+
+    .windows-list {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        margin: .35rem 0 1rem;
+    }
+
+    .window-row {
+        display: grid;
+        grid-template-columns: minmax(160px, 1.4fr) minmax(130px, .8fr) minmax(180px, 1fr);
+        gap: 1rem;
+        align-items: center;
+        padding: .72rem 0;
+        border-bottom: 1px solid #F0F1F3;
+        font-size: .9rem;
+    }
+
+    .window-row:last-child { border-bottom: 0; }
+
+    .window-country { font-weight: 750; color: var(--ink); }
+    .window-meta { color: var(--muted); font-size: .82rem; }
+    .window-chip {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        border: 1px solid #CFEFDC;
+        background: var(--rover-green-soft);
+        color: var(--rover-green-dark);
+        border-radius: 999px;
+        padding: .28rem .62rem;
+        font-weight: 750;
+        font-size: .82rem;
+    }
+
+    .minimal-panel {
+        background: #FFFFFF;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: .85rem 1rem;
+        margin-bottom: .85rem;
     }
 
     div[data-testid="stExpander"] {
-        border: 1px solid rgba(229, 231, 235, .95) !important;
-        border-radius: 18px !important;
-        background: rgba(255,255,255,.78) !important;
-        box-shadow: var(--shadow-tiny);
+        border: 1px solid var(--line) !important;
+        border-radius: 16px !important;
+        background: #FFFFFF !important;
+        box-shadow: none;
         overflow: hidden;
     }
 
@@ -331,14 +349,14 @@ st.markdown("""
     }
 
     div[data-testid="stTabs"] button[aria-selected="true"] {
-        color: var(--rover-purple);
+        color: var(--rover-green-dark);
     }
 
     div[data-testid="stDataFrame"] {
-        border-radius: 18px;
+        border-radius: 16px;
         overflow: hidden;
         border: 1px solid var(--line);
-        box-shadow: var(--shadow-tiny);
+        box-shadow: none;
     }
 
     .stTextInput input,
@@ -347,21 +365,19 @@ st.markdown("""
     div[data-baseweb="select"] > div,
     div[data-baseweb="base-input"] {
         border-radius: 12px !important;
-        border-color: #D1D5DB !important;
+        border-color: #D0D5DD !important;
         background-color: #FFFFFF !important;
     }
 
-    .stTextArea textarea {
-        line-height: 1.5 !important;
-    }
+    .stTextArea textarea { line-height: 1.5 !important; }
 
     .stButton > button,
     .stDownloadButton > button,
     .stLinkButton > a {
         border-radius: 12px !important;
         font-weight: 750 !important;
-        border: 1px solid #E5E7EB !important;
-        box-shadow: 0 1px 2px rgba(17,24,39,.05);
+        border: 1px solid #D0D5DD !important;
+        box-shadow: none;
         transition: all .12s ease-in-out;
     }
 
@@ -369,33 +385,29 @@ st.markdown("""
     .stDownloadButton > button:hover,
     .stLinkButton > a:hover {
         transform: translateY(-1px);
-        box-shadow: 0 6px 14px rgba(17,24,39,.09);
+        border-color: var(--rover-green) !important;
     }
 
     .stButton > button[kind="primary"],
     .stDownloadButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%) !important;
-        border-color: #6D28D9 !important;
+        background: var(--rover-green) !important;
+        border-color: var(--rover-green) !important;
         color: #FFFFFF !important;
     }
 
     .stButton > button[kind="primary"]:hover,
     .stDownloadButton > button[kind="primary"]:hover {
-        background: linear-gradient(135deg, #5B21B6 0%, #7C3AED 100%) !important;
+        background: var(--rover-green-dark) !important;
+        border-color: var(--rover-green-dark) !important;
     }
 
-    .stAlert {
-        border-radius: 16px;
-    }
-
-    code {
-        border-radius: 10px !important;
-    }
+    .stAlert { border-radius: 14px; }
+    code { border-radius: 10px !important; }
 
     hr {
         border: none;
         height: 1px;
-        background: linear-gradient(90deg, transparent, #E5E7EB, transparent);
+        background: var(--line);
         margin: 1.1rem 0;
     }
 
@@ -404,6 +416,7 @@ st.markdown("""
         .step-header { font-size: 1.55rem; }
         .step-sub { font-size: .92rem; }
         .stat-num { font-size: 1.55rem; }
+        .window-row { grid-template-columns: 1fr; gap: .35rem; }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -577,7 +590,7 @@ def sidebar():
             st.markdown(
                 f"""
                 <div style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;padding:.75rem .85rem;margin-bottom:.65rem">
-                    <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:#6D28D9;font-weight:800;margin-bottom:.2rem">Signed in</div>
+                    <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:#008A4E;font-weight:800;margin-bottom:.2rem">Signed in</div>
                     <div style="font-size:.82rem;color:#111827;line-height:1.3;word-break:break-word">{st.session_state['user_email']}</div>
                 </div>
                 """,
@@ -607,12 +620,12 @@ def render_step_footer():
             bg, fg, dot = "#059669", "#fff", "✓"
             border = "#059669"
         elif n == current:
-            bg, fg, dot = "#111827", "#fff", str(n)
-            border = "#111827"
+            bg, fg, dot = "#00BF6F", "#fff", str(n)
+            border = "#00BF6F"
         else:
             bg, fg, dot = "#F3F4F6", "#9CA3AF", str(n)
             border = "#E5E7EB"
-        txt_color = "#111827" if n == current else ("#047857" if n < current else "#9CA3AF")
+        txt_color = "#008A4E" if n == current else ("#047857" if n < current else "#9CA3AF")
         weight = "800" if n == current else "650"
         pills += (
             f'<div style="display:flex;align-items:center;gap:8px;min-width:0">'
@@ -631,6 +644,131 @@ def render_step_footer():
         f'{pills}</div>',
         unsafe_allow_html=True,
     )
+
+
+# ── Scheduling window helper ──────────────────────────────────────────────────
+def calculate_scheduling_windows(sample, researcher_tz: str, duration_minutes: int = 45):
+    """Return realistic candidate scheduling windows in the researcher timezone.
+
+    Uses country-level working hours and conservative timezone coverage when a
+    country has multiple common timezones. This keeps the UX useful without
+    pretending we know each candidate's exact city. Humanity survives another
+    approximation.
+    """
+    import pytz
+
+    COUNTRY_TZ = {
+        "US": (["America/New_York", "America/Chicago", "America/Los_Angeles"], "United States"),
+        "CA": (["America/Toronto", "America/Vancouver"], "Canada"),
+        "GB": (["Europe/London"], "United Kingdom"),
+        "DE": (["Europe/Berlin"], "Germany"),
+        "FR": (["Europe/Paris"], "France"),
+        "NL": (["Europe/Amsterdam"], "Netherlands"),
+        "AU": (["Australia/Sydney"], "Australia"),
+        "NZ": (["Pacific/Auckland"], "New Zealand"),
+        "NO": (["Europe/Oslo"], "Norway"),
+        "SE": (["Europe/Stockholm"], "Sweden"),
+        "ES": (["Europe/Madrid"], "Spain"),
+        "MX": (["America/Mexico_City"], "Mexico"),
+        "BR": (["America/Sao_Paulo"], "Brazil"),
+        "IT": (["Europe/Rome"], "Italy"),
+    }
+    EU_COUNTRIES = {"GB", "DE", "FR", "NL", "NO", "SE", "ES", "IT", "BE", "AT", "CH", "PT", "DK", "FI"}
+
+    def working_hours(country_code: str):
+        return (10, 19) if country_code in EU_COUNTRIES else (9, 18)
+
+    def researcher_working_hours(tz_name: str):
+        return (10, 19) if tz_name.startswith("Europe") else (9, 18)
+
+    def to_hhmm(total_minutes: int):
+        return f"{total_minutes // 60:02d}:{total_minutes % 60:02d}"
+
+    def format_slots(slots):
+        if not slots:
+            return "No clean overlap"
+        slots = sorted(slots)
+        groups = []
+        current = [slots[0]]
+        for s in slots[1:]:
+            if s - current[-1] == 30:
+                current.append(s)
+            else:
+                groups.append(current)
+                current = [s]
+        groups.append(current)
+
+        labels = []
+        for g in groups:
+            if len(g) == 1:
+                labels.append(to_hhmm(g[0]))
+            else:
+                labels.append(f"{to_hhmm(g[0])}–{to_hhmm(g[-1])}")
+        return ", ".join(labels)
+
+    if sample is None or "country_code" not in sample.columns or len(sample) == 0:
+        return [], [], "No candidates selected"
+
+    rtz = pytz.timezone(researcher_tz)
+    base_day = datetime.now(rtz).replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=7)
+    r_start, r_end = researcher_working_hours(researcher_tz)
+    candidate_duration = timedelta(minutes=int(duration_minutes or 45))
+    country_counts = sample["country_code"].dropna().astype(str).str.upper().value_counts()
+    total = int(len(sample))
+    all_researcher_slots = {m for m in range(r_start * 60, r_end * 60, 30) if m + duration_minutes <= r_end * 60}
+
+    rows = []
+    global_slots = set(all_researcher_slots)
+
+    for country, count in country_counts.items():
+        if country not in COUNTRY_TZ:
+            rows.append({
+                "country": country,
+                "name": country,
+                "count": int(count),
+                "pct": int(round(int(count) / total * 100)),
+                "window": "Unknown timezone",
+                "slots": set(),
+                "status": "warn",
+                "note": "Country not mapped",
+            })
+            global_slots = set()
+            continue
+
+        tz_list, country_name = COUNTRY_TZ[country]
+        c_start, c_end = working_hours(country)
+        valid_slots = set(all_researcher_slots)
+
+        for ctz_name in tz_list:
+            ctz = pytz.timezone(ctz_name)
+            tz_valid = set()
+            for minute in all_researcher_slots:
+                start_local = base_day + timedelta(minutes=minute)
+                end_local = start_local + candidate_duration
+                candidate_start = start_local.astimezone(ctz)
+                candidate_end = end_local.astimezone(ctz)
+                if (
+                    c_start <= candidate_start.hour + candidate_start.minute / 60
+                    and candidate_end.hour + candidate_end.minute / 60 <= c_end
+                    and candidate_start.date() == candidate_end.date()
+                ):
+                    tz_valid.add(minute)
+            valid_slots &= tz_valid
+
+        global_slots &= valid_slots
+        rows.append({
+            "country": country,
+            "name": country_name,
+            "count": int(count),
+            "pct": int(round(int(count) / total * 100)),
+            "window": format_slots(valid_slots),
+            "slots": valid_slots,
+            "status": "ok" if valid_slots else "warn",
+            "note": "Conservative across major time zones" if len(tz_list) > 1 else "Working-hours overlap",
+        })
+
+    global_label = format_slots(global_slots) if rows else "No candidates selected"
+    return rows, sorted(global_slots), global_label
 
 # ── STEP 1 — Google sign-in ────────────────────────────────────────────────────
 def step_sign_in():
@@ -689,7 +827,7 @@ def step_load_candidates():
         sub = f'<div style="font-size:0.82rem;color:#6b7280;margin-top:1px">{subtitle}</div>' if subtitle else ""
         return (
             f'<div style="display:flex;align-items:baseline;gap:10px;margin:1.4rem 0 0.8rem">'
-            f'<span style="background:#7C3AED;color:#fff;border-radius:50%;min-width:24px;height:24px;'
+            f'<span style="background:#00BF6F;color:#fff;border-radius:50%;min-width:24px;height:24px;'
             f'display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700">{n}</span>'
             f'<div><span style="font-size:1rem;font-weight:700;color:#111827">{title}</span>{sub}</div></div>'
         )
@@ -710,7 +848,7 @@ def step_load_candidates():
     # ── Load data ──────────────────────────────────────────────────────────────
     if st.session_state["df_candidates"] is None:
         st.markdown(
-            '<div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:12px;'
+            '<div style="background:#FFFFFF;border:1px solid #CFEFDC;border-radius:12px;'
             'padding:1rem 1.2rem;margin-bottom:1.5rem">'
             '<div style="font-weight:700;margin-bottom:4px">📊 Load your candidate pool</div>'
             '<div style="font-size:0.88rem;color:#6b7280">Use the Rover Research Ops base (recommended) or bring your own data. '
@@ -915,8 +1053,8 @@ def step_load_candidates():
                     walking_sel = st.selectbox("🦮 Dog Walking", ["All", "Offers it", "Doesn't offer it"])
             else:
                 st.markdown(
-                    '<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;'
-                    'padding:0.5rem 0.8rem;margin-bottom:0.65rem;font-weight:600;color:#1e40af;font-size:0.83rem">'
+                    '<div style="background:#F8FAF9;border:1px solid #DDE5DF;border-radius:8px;'
+                    'padding:0.5rem 0.8rem;margin-bottom:0.65rem;font-weight:600;color:#2F6B4F;font-size:0.83rem">'
                     '🏠 Owner filters</div>', unsafe_allow_html=True,
                 )
                 st.caption("Use the filters on the left to refine your owner pool by country, language, segment, and bookings.")
@@ -946,8 +1084,8 @@ def step_load_candidates():
             return
 
         st.markdown(
-            f'<div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:8px;'
-            f'padding:0.6rem 1rem;margin-top:0.5rem;font-size:0.88rem;color:#4c1d95">'
+            f'<div style="background:#F0FBF5;border:1px solid #BFEBD1;border-radius:8px;'
+            f'padding:0.6rem 1rem;margin-top:0.5rem;font-size:0.88rem;color:#065F46">'
             f'✅ <strong>{len(filtered):,} eligible {user_type_sel.lower()}</strong> match your filters</div>',
             unsafe_allow_html=True,
         )
@@ -973,7 +1111,7 @@ def step_load_candidates():
             )
 
     # ── 3 · Set the incentive ──────────────────────────────────────────────────
-    st.markdown(section_hdr("3", "Set the incentive", "Currency is auto-detected from your candidates' countries. Adjust amounts as needed."), unsafe_allow_html=True)
+    st.markdown(section_hdr("3", "Set the incentive", "Default adapts to the selected segment. Add no incentive, raffle, or gift card when needed."), unsafe_allow_html=True)
 
     # Auto-detect currencies
     auto_currencies = []
@@ -990,26 +1128,41 @@ def step_load_candidates():
     if not st.session_state.get("incentive_currencies"):
         st.session_state["incentive_currencies"] = auto_currencies
 
-    inc_col1, inc_col2 = st.columns([2, 1])
+    default_type = "Sitter incentive" if user_type_sel == "Sitters" else "Owner credits"
+    if st.session_state.get("_last_incentive_user_type") != user_type_sel:
+        st.session_state["incentive_type"] = default_type
+        st.session_state["_last_incentive_user_type"] = user_type_sel
+
+    incentive_options = [default_type, "No incentive", "Raffle", "Amazon Gift card"]
+    current_incentive = st.session_state.get("incentive_type", default_type)
+    if current_incentive not in incentive_options:
+        current_incentive = default_type
+
+    inc_col1, inc_col2 = st.columns([1, 1])
     with inc_col1:
-        selected_currencies = st.multiselect(
-            "Currency",
-            list(CURRENCY_SYMBOLS.keys()),
-            default=st.session_state.get("incentive_currencies", auto_currencies),
-            help="Auto-detected from your pool's countries. You can add or remove currencies.",
-        )
-        st.session_state["incentive_currencies"] = selected_currencies
-    with inc_col2:
-        default_type = "Sitter incentive" if user_type_sel == "Sitters" else "Owner credits"
         incentive_type = st.selectbox(
             "Incentive type",
-            ["Sitter incentive", "Owner credits"],
-            index=0 if st.session_state.get("incentive_type", default_type) == "Sitter incentive" else 1,
-            help='Sitter incentive → "directly in your account". Owner credits → "as Rover credits for upcoming services".',
+            incentive_options,
+            index=incentive_options.index(current_incentive),
+            help="Default adapts to the selected segment. Use raffle or gift card when the incentive is not paid through Rover.",
         )
         st.session_state["incentive_type"] = incentive_type
 
-    if selected_currencies:
+    needs_amount = incentive_type != "No incentive"
+    with inc_col2:
+        if needs_amount:
+            selected_currencies = st.multiselect(
+                "Currency",
+                list(CURRENCY_SYMBOLS.keys()),
+                default=st.session_state.get("incentive_currencies", auto_currencies),
+                help="Auto-detected from your pool's countries. You can add or remove currencies.",
+            )
+            st.session_state["incentive_currencies"] = selected_currencies
+        else:
+            selected_currencies = []
+            st.info("No incentive will be shown in the invite copy.")
+
+    if needs_amount and selected_currencies:
         incentive_amounts = st.session_state.get("incentive_amounts", {})
         amt_cols = st.columns(min(len(selected_currencies), 4))
         for i, currency in enumerate(selected_currencies):
@@ -1056,8 +1209,8 @@ def step_load_candidates():
     noshows   = math.ceil(invite_n * 0.15)
     recommend = invite_n + noshows
     st.markdown(
-        f'<div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;'
-        f'padding:0.75rem 1rem;margin-top:0.5rem;font-size:0.87rem;color:#0c4a6e">'
+        f'<div style="background:#F8FAF9;border:1px solid #DDE5DF;border-radius:10px;'
+        f'padding:0.75rem 1rem;margin-top:0.5rem;font-size:0.87rem;color:#344054">'
         f'💡 <strong>Recruitment tip:</strong> To complete <strong>{n_interviews}</strong> interviews, '
         f'invite at least <strong>{recommend} people</strong> — '
         f'{invite_n} to cover non-responses (+35%), plus {noshows} extra for no-shows (~15%).</div>',
@@ -1091,7 +1244,7 @@ def step_sample_design():
     import pytz
 
     st.markdown('<div class="step-header">Design your invitation</div>', unsafe_allow_html=True)
-    st.markdown('<div class="step-sub">Set the study title, write your email template, and find the best scheduling windows for your candidates.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="step-sub">Set the email subject, write your template, and review realistic scheduling windows for your candidates.</div>', unsafe_allow_html=True)
 
     df_candidates = st.session_state.get("df_candidates")
     spreadsheet_cols = list(df_candidates.columns) if df_candidates is not None else []
@@ -1112,15 +1265,15 @@ def step_sample_design():
     ]
 
     # ── Title ──────────────────────────────────────────────────────────────────
-    st.markdown('<div class="section-label">Study title</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-label">Email subject</div>', unsafe_allow_html=True)
     current_title = st.session_state.get("study_title") or ""
     default_idx = TITLE_OPTIONS.index(current_title) if current_title in TITLE_OPTIONS else len(TITLE_OPTIONS) - 1
-    selected_title = st.selectbox("Title", TITLE_OPTIONS, index=default_idx, label_visibility="collapsed")
+    selected_title = st.selectbox("Email subject", TITLE_OPTIONS, index=default_idx, label_visibility="collapsed")
     if selected_title == "Custom...":
         custom_title = st.text_input(
-            "Custom title",
+            "Custom email subject",
             value=current_title if current_title not in TITLE_OPTIONS else "",
-            placeholder="e.g. Sitter Experience Research — June 2026",
+            placeholder="e.g. Share your Rover experience",
             label_visibility="collapsed",
         )
         st.session_state["study_title"] = custom_title
@@ -1138,7 +1291,8 @@ def step_sample_design():
         "[user_type]": "owner / sitter",
         "[duration]": f"Interview duration ({duration} min)",
         "[BOOKING_LINK]": "Calendar booking link (from Step 4)",
-        "[incentive_type]": "Sitter incentive / Owner credits (set in Step 2)",
+        "[incentive_type]": "Selected incentive type (set in Step 2)",
+        "[incentive_summary]": "Ready-to-send incentive sentence (set in Step 2)",
     }
     all_vars = list(SPECIAL_VARS.keys()) + [f"[{c}]" for c in spreadsheet_cols if f"[{c}]" not in SPECIAL_VARS]
 
@@ -1164,7 +1318,7 @@ Here's what to expect:
 
 The session will take place over a video call.
 
-As a thank-you, you'll receive [incentive_amount] [incentive_currency] [incentive_type] directly on your Rover account.
+As a thank-you, [incentive_summary].
 
 If the available times don't work for you, or if the session is already fully booked, don't worry — we'll keep you in mind for future research opportunities.
 
@@ -1218,89 +1372,39 @@ The Rover Research Team"""
     sample = st.session_state.get("df_sample")
     if sample is not None and "country_code" in sample.columns:
         st.markdown("<div style='height:0.75rem'></div>", unsafe_allow_html=True)
-
-        COUNTRY_TZ = {
-            "US": ["America/New_York", "America/Chicago", "America/Los_Angeles"],
-            "CA": ["America/Toronto", "America/Vancouver"],
-            "GB": ["Europe/London"],
-            "DE": ["Europe/Berlin"],
-            "FR": ["Europe/Paris"],
-            "NL": ["Europe/Amsterdam"],
-            "AU": ["Australia/Sydney"],
-            "NZ": ["Pacific/Auckland"],
-            "NO": ["Europe/Oslo"],
-            "SE": ["Europe/Stockholm"],
-            "ES": ["Europe/Madrid"],
-            "MX": ["America/Mexico_City"],
-            "BR": ["America/Sao_Paulo"],
-            "IT": ["Europe/Rome"],
-        }
-
-        rtz = pytz.timezone(researcher_tz)
-        now = datetime.now(rtz).replace(minute=0, second=0, microsecond=0)
-        country_counts = sample["country_code"].dropna().value_counts()
+        rows, global_slots, global_label = calculate_scheduling_windows(sample, researcher_tz, duration)
         total = len(sample)
 
-        st.markdown(f'<div class="section-label">Scheduling windows — {total} candidates selected</div>', unsafe_allow_html=True)
-
-        EU_COUNTRIES = {"GB", "DE", "FR", "NL", "NO", "SE", "ES", "IT", "BE", "AT", "CH", "PT", "DK", "FI"}
-        US_COUNTRIES = {"US", "CA"}
-
-        def working_hours(country_code):
-            """Returns (start_hour, end_hour) for a given country."""
-            if country_code in EU_COUNTRIES:
-                return 10, 19
-            return 9, 18  # default / US
-
-        global_good = set(range(9, 19))
-
-        for country, count in country_counts.items():
-            if country not in COUNTRY_TZ:
-                continue
-            pct = int(round(count / total * 100))
-            c_start, c_end = working_hours(country)
-
-            good_hours = []
-            for ctz_str in COUNTRY_TZ[country]:
-                ctz = pytz.timezone(ctz_str)
-                for hour in range(7, 21):
-                    r_hour = now.replace(hour=hour)
-                    c_hour = r_hour.astimezone(ctz)
-                    r_start, r_end = working_hours("EU" if researcher_tz.startswith("Europe") else "US")
-                    if c_start <= c_hour.hour < c_end and r_start <= r_hour.hour < r_end:
-                        good_hours.append(r_hour.hour)
-                if good_hours:
-                    break
-
-            if good_hours:
-                window = f"{min(good_hours):02d}:00 – {max(good_hours):02d}:00"
-                global_good &= set(good_hours)
-                st.markdown(
-                    f'<div class="tz-card">🌍 <strong>{country}</strong> &nbsp;·&nbsp; {count} candidate{"s" if count > 1 else ""} ({pct}%)'
-                    f'<br><span style="font-size:0.82rem">Overlap window in your timezone: <strong>{window}</strong></span></div>',
-                    unsafe_allow_html=True,
-                )
-            else:
-                global_good = set()
-                st.markdown(
-                    f'<div class="tz-warn">⚠️ <strong>{country}</strong> &nbsp;·&nbsp; {count} candidate{"s" if count > 1 else ""} ({pct}%)'
-                    f'<br><span style="font-size:0.82rem">No easy working-hours overlap — consider early morning or async scheduling.</span></div>',
-                    unsafe_allow_html=True,
-                )
-
-        if global_good:
-            best_start = f"{min(global_good):02d}:00"
-            best_end   = f"{max(global_good):02d}:00"
+        st.markdown(f'<div class="section-label">Scheduling windows · {total} candidates selected</div>', unsafe_allow_html=True)
+        html_rows = ""
+        for row in rows:
+            chip_color = "#EAF8F0" if row["status"] == "ok" else "#FFF8ED"
+            chip_border = "#CFEFDC" if row["status"] == "ok" else "#F4D5A6"
+            chip_text = "#008A4E" if row["status"] == "ok" else "#8A4B08"
+            html_rows += (
+                f'<div class="window-row">'
+                f'<div><div class="window-country">{row["name"]}</div>'
+                f'<div class="window-meta">{row["count"]} candidate{"s" if row["count"] != 1 else ""} · {row["pct"]}%</div></div>'
+                f'<div class="window-meta">{row["note"]}</div>'
+                f'<div><span class="window-chip" style="background:{chip_color};border-color:{chip_border};color:{chip_text}">{row["window"]}</span></div>'
+                f'</div>'
+            )
+        st.markdown(f'<div class="windows-list">{html_rows}</div>', unsafe_allow_html=True)
+        if global_slots:
             st.markdown(
-                f'<div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:10px;padding:0.8rem 1rem;margin-top:0.4rem;color:#4c1d95">'
-                f'💡 <strong>Best window across all candidates:</strong> {best_start} – {best_end} your time</div>',
+                f'<div class="success-banner">Best shared start times in your timezone: <strong>{global_label}</strong></div>',
+                unsafe_allow_html=True,
+            )
+        else:
+            st.markdown(
+                '<div class="tz-warn">No shared working-hours overlap across all selected candidates. Consider separate schedules by market.</div>',
                 unsafe_allow_html=True,
             )
 
     # ── Continue ───────────────────────────────────────────────────────────────
     st.markdown("<div style='height:1rem'></div>", unsafe_allow_html=True)
     if not st.session_state.get("study_title"):
-        st.info("Add a study title to continue.")
+        st.info("Add an email subject to continue.")
     else:
         if st.button("Continue → Set up Calendar", type="primary"):
             st.session_state["step"] = 4
@@ -1318,91 +1422,54 @@ def step_calendar_setup():
     researcher_tz = st.session_state.get("researcher_tz", "America/New_York")
     sample        = st.session_state.get("df_sample")
 
-    import pytz
-
     # ── Candidate timezone context ─────────────────────────────────────────────
-    COUNTRY_TZ = {
-        "US": ("America/New_York", "United States"),
-        "CA": ("America/Toronto", "Canada"),
-        "GB": ("Europe/London", "United Kingdom"),
-        "DE": ("Europe/Berlin", "Germany"),
-        "FR": ("Europe/Paris", "France"),
-        "NL": ("Europe/Amsterdam", "Netherlands"),
-        "AU": ("Australia/Sydney", "Australia"),
-        "NZ": ("Pacific/Auckland", "New Zealand"),
-        "NO": ("Europe/Oslo", "Norway"),
-        "SE": ("Europe/Stockholm", "Sweden"),
-        "ES": ("Europe/Madrid", "Spain"),
-        "MX": ("America/Mexico_City", "Mexico"),
-        "BR": ("America/Sao_Paulo", "Brazil"),
-        "IT": ("Europe/Rome", "Italy"),
-    }
-
     if sample is not None and "country_code" in sample.columns:
-        rtz = pytz.timezone(researcher_tz)
-        now = datetime.now(rtz).replace(minute=0, second=0, microsecond=0)
-        country_counts = sample["country_code"].dropna().value_counts()
-        known = [(c, n) for c, n in country_counts.items() if c in COUNTRY_TZ]
-
-        if known:
-            lines = []
-            EU_CTRY = {"GB","DE","FR","NL","NO","SE","ES","IT","BE","AT","CH","PT","DK","FI"}
-            def _wh(cc): return (10, 19) if cc in EU_CTRY else (9, 18)
-            r_start, r_end = _wh("EU" if researcher_tz.startswith("Europe") else "US")
-
-            global_good = set(range(r_start, r_end))
-            for country, count in known:
-                ctz_str, cname = COUNTRY_TZ[country]
-                ctz = pytz.timezone(ctz_str)
-                c_start, c_end = _wh(country)
-                good = []
-                for hour in range(7, 21):
-                    r = now.replace(hour=hour)
-                    c = r.astimezone(ctz)
-                    if c_start <= c.hour < c_end and r_start <= r.hour < r_end:
-                        good.append(r.hour)
-                if good:
-                    global_good &= set(good)
-                    window = f"{min(good):02d}:00–{max(good):02d}:00"
-                    lines.append(f"• **{cname}** ({count} candidate{'s' if count > 1 else ''}) → working-hours overlap in your timezone: **{window}**")
-                else:
-                    global_good = set()
-                    lines.append(f"• **{cname}** ({count} candidate{'s' if count > 1 else ''}) → ⚠️ difficult overlap")
-
-            rec = f"\n\n💡 **Recommended window covering all candidates:** {min(global_good):02d}:00–{max(global_good):02d}:00 your time" if global_good else ""
-
-            st.markdown('<div class="section-label">Your candidates\' timezones</div>', unsafe_allow_html=True)
-            st.markdown(
-                '<div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:1rem">'
-                + "When setting up your time slots, keep these windows in mind:<br><br>"
-                + "<br>".join(lines)
-                + rec.replace("\n\n", "<br><br>").replace("\n", "<br>")
-                + "</div>",
-                unsafe_allow_html=True,
-            )
+        rows, global_slots, global_label = calculate_scheduling_windows(sample, researcher_tz, duration)
+        st.markdown('<div class="section-label">Scheduling context</div>', unsafe_allow_html=True)
+        if rows:
+            compact_rows = ""
+            for row in rows:
+                compact_rows += (
+                    f'<div class="window-row">'
+                    f'<div><div class="window-country">{row["name"]}</div>'
+                    f'<div class="window-meta">{row["count"]} candidate{"s" if row["count"] != 1 else ""}</div></div>'
+                    f'<div class="window-meta">Suggested start times</div>'
+                    f'<div><span class="window-chip">{row["window"]}</span></div>'
+                    f'</div>'
+                )
+            st.markdown(f'<div class="windows-list">{compact_rows}</div>', unsafe_allow_html=True)
+            if global_slots:
+                st.caption(f"Best shared start times in your timezone: {global_label}")
+            else:
+                st.caption("No single working-hours window covers everyone. Create separate availability blocks by market.")
 
     # ── Copy-paste content ─────────────────────────────────────────────────────
-    col_l, col_r = st.columns(2)
+    col_l, col_r = st.columns([1, 1.35])
 
     with col_l:
         st.markdown('<div class="section-label">Appointment title</div>', unsafe_allow_html=True)
-        st.code(study_title or "Your study title here", language=None)
+        st.text_input(
+            "Appointment title",
+            value=study_title or "Your email subject here",
+            label_visibility="collapsed",
+            key="appointment_title_display",
+        )
 
     with col_r:
         st.markdown('<div class="section-label">Description template</div>', unsafe_allow_html=True)
         DESCRIPTION_TEMPLATES = {
             "Short": (
-                "Pick a day and time that works best for you! 😊\n\n"
-                "Note: this calendar detects your time zone automatically — "
-                "just double-check before confirming."
+                "Pick a day and time that works best for you.\n\n"
+                "This calendar detects your time zone automatically. Please double-check before confirming."
             ),
             "Full invite": (
-                f"What to expect:\n"
-                f"• {duration}-minute conversation via Google Meet\n"
-                "• Join from a quiet place with audio and video enabled\n"
-                "• No preparation needed\n\n"
-                "Interested? Pick a time that works for you.\n\n"
-                "If all sessions are full, reply to this email and we'll add you to the waitlist."
+                "Hi from Rover! 🐾\n\n"
+                "Thanks for signing up to speak with us. This will be a remote conversation with the Rover Research Team via Google Meet. "
+                "As a thank-you for your time, you’ll receive the incentive specified in your invitation after completing the session.\n\n"
+                "Please join from a quiet place with audio and video enabled. No preparation is needed.\n\n"
+                "Thanks again for helping us improve the Rover experience!\n\n"
+                "Best,\n"
+                "Rover Research Team"
             ),
         }
         selected_desc = st.radio("Template", list(DESCRIPTION_TEMPLATES.keys()), horizontal=True, label_visibility="collapsed")
@@ -1412,12 +1479,11 @@ def step_calendar_setup():
         calendar_description = st.text_area(
             "Description",
             value=st.session_state.get("calendar_description", DESCRIPTION_TEMPLATES[selected_desc]),
-            height=120,
+            height=180,
             label_visibility="collapsed",
             key="cal_desc_editor",
         )
         st.session_state["calendar_description"] = calendar_description
-        st.code(calendar_description, language=None)
 
     st.markdown("<div style='height:0.75rem'></div>", unsafe_allow_html=True)
 
@@ -1426,13 +1492,11 @@ def step_calendar_setup():
     col_steps, col_btn = st.columns([4, 1])
     with col_steps:
         st.markdown(
-            f"1. Click **Open Google Calendar** → **+ Create** → **Appointment schedule**  \n"
-            f"2. Paste the **title** above as the schedule name  \n"
-            f"3. Set duration to **{duration} min** · timezone to **{researcher_tz}**  \n"
-            f"4. Add your available days and times — keep the windows above in mind  \n"
-            f"5. Paste the **description** above in the description field  \n"
-            f"6. Click **Save** → open the schedule page → copy the **Open booking page** link  \n"
-            f"7. Paste the link below and click **Save**"
+            f"1. Open Google Calendar and create an **Appointment schedule**.  \n"
+            f"2. Use the title and description above.  \n"
+            f"3. Set duration to **{duration} min** and timezone to **{researcher_tz}**.  \n"
+            f"4. Add availability using the scheduling context above.  \n"
+            f"5. Save, copy the booking page link, and paste it below."
         )
     with col_btn:
         st.markdown("<div style='margin-top:0.35rem'></div>", unsafe_allow_html=True)
@@ -1577,13 +1641,26 @@ def step_generate_and_send():
             body = body.replace("[duration]", str(duration))
             body = body.replace("[incentive_currency]", incentive_currency)
             body = body.replace("[incentive_amount]", str(incentive_amount))
-            # Per-candidate incentive_type phrasing
+            # Per-candidate incentive phrasing
             row_user_type = str(row.get("user_type", "")).strip().lower()
-            if row_user_type == "sitter":
+            selected_incentive_type = st.session_state.get("incentive_type", "Sitter incentive")
+            if selected_incentive_type == "No incentive":
+                inc_type_phrase = "no incentive"
+                inc_summary = "there is no incentive attached to this study"
+            elif selected_incentive_type == "Raffle":
+                inc_type_phrase = "raffle entry"
+                inc_summary = "you'll be entered into a raffle after completing the session"
+            elif selected_incentive_type == "Amazon Gift card":
+                inc_type_phrase = "Amazon gift card"
+                inc_summary = f"you'll receive a {incentive_amount} {incentive_currency} Amazon gift card after completing the session"
+            elif row_user_type == "sitter":
                 inc_type_phrase = "directly in your account"
+                inc_summary = f"you'll receive {incentive_amount} {incentive_currency} directly in your Rover account"
             else:
                 inc_type_phrase = "as Rover credits that you can use on upcoming services"
+                inc_summary = f"you'll receive {incentive_amount} {incentive_currency} as Rover credits for upcoming services"
             body = body.replace("[incentive_type]", inc_type_phrase)
+            body = body.replace("[incentive_summary]", inc_summary)
 
             emails.append({
                 "email": str(row.get("email", "")),
