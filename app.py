@@ -515,11 +515,11 @@ def dict_to_creds(d):
 def sidebar():
     with st.sidebar:
         steps = [
-            (1, "Sign in with Google", "Connect Calendar, Gmail, and Sheets."),
-            (2, "Select candidates", "Load the pool, filter, and sample."),
-            (3, "Design invitation", "Write the invite and check timezone fit."),
-            (4, "Set up calendar", "Create the schedule and save the link."),
-            (5, "Send invites", "Review, send, and log invite dates."),
+            (1, "Sign in with Google"),
+            (2, "Select candidates"),
+            (3, "Design invitation"),
+            (4, "Set up calendar"),
+            (5, "Send invites"),
         ]
 
         current = st.session_state["step"]
@@ -528,9 +528,9 @@ def sidebar():
         st.markdown(
             """
             <div class="sidebar-brand">
-                <img src="https://www.rover.com/blog/wp-content/uploads/rover-logo-black.png" style="width:112px; display:block;" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Rover.com_logo.jpg" style="width:112px; display:block;" />
                 <div class="sidebar-title">Research Ops Scheduler</div>
-                <div class="sidebar-subtitle">Recruit, schedule, and invite participants without turning your desk into a spreadsheet crime scene.</div>
+                <div class="sidebar-subtitle">Recruit, schedule, and invite participants.</div>
             </div>
             """,
             unsafe_allow_html=True,
